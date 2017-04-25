@@ -49,7 +49,23 @@
 		<table class="table">
 		  <tbody>
 				<tr bgcolor="blue">
-					<td id="pub">1</td> 
+					<td id="pub">
+					<?php
+				
+					$user="yoann";
+					$pass="root";
+					try {
+						$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user, $pass);
+						foreach($dbh->query('SELECT * from prof') as $row) {
+							print_r($row);
+						}
+						$dbh = null;
+					} catch (PDOException $e) {
+						print "Erreur !: " . $e->getMessage() . "<br/>";
+						die();
+					}
+					?>
+					</td> 
 					<td rowspan="2" id="activite">2</td> 
 					<td id="meteo">
 						<div id="cont_26c4ec352c497050c4c5c215e33b28b2">
