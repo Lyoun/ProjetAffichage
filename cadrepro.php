@@ -1,7 +1,7 @@
 <html>
 	
 	<head> 
-		<title></title>
+		<title>Projet TV</title>
 		<SCRIPT LANGUAGE="JavaScript">
 				
 				// script alerte
@@ -45,7 +45,7 @@
 	</head> 
 	
 	<body onLoad=" banniere();" onUnload="clearTimeout(ban)" bgcolor="#FFFFFF">
-	
+
 		<table class="table">
 		  <tbody>
 				<tr bgcolor="blue">
