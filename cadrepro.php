@@ -45,7 +45,7 @@
 	</head> 
 	
 	<body onLoad=" banniere();" onUnload="clearTimeout(ban)" bgcolor="#FFFFFF">
-	
+
 		<table class="table">
 		  <tbody>
 				<tr bgcolor="blue">
