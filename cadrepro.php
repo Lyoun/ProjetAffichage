@@ -1,7 +1,7 @@
 <html>
 	
 	<head> 
-		<title>Projet TV WOUHOU</title>
+		<title>Projet TV</title>
 		<SCRIPT LANGUAGE="JavaScript">
 				
 				// script alerte
@@ -60,7 +60,9 @@
 						
 						// ici faire une boucle qui parcours $row afin d'afficher proprement les noms et prénoms des profs
 							print_r($row[0]);
+							echo "&nbsp;";
 							print_r($row[1][0]);
+							echo "<br />";
 						}
 						$dbh = null;
 					} catch (PDOException $e) {
