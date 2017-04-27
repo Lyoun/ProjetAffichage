@@ -1,7 +1,7 @@
 <html>
 	
 	<head> 
-		<title>Projet TV</title>
+		<title>Projet TV WOUHOU</title>
 		<SCRIPT LANGUAGE="JavaScript">
 				
 				// script alerte
@@ -56,8 +56,11 @@
 					$pass="root";
 					try {
 						$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user, $pass);
-						foreach($dbh->query('SELECT * from prof') as $row) {
-							print_r($row);
+						foreach($dbh->query('SELECT nom, prenom from prof') as $row) {
+						
+						// ici faire une boucle qui parcours $row afin d'afficher proprement les noms et prénoms des profs
+							print_r($row[0]);
+							print_r($row[1][0]);
 						}
 						$dbh = null;
 					} catch (PDOException $e) {
