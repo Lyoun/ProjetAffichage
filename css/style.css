@@ -16,6 +16,13 @@ body{
 }
 
 #pub{
+color:white;
+font-size:10px;
+border:2px solid red;
+
+    height: 100px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: auto;  /* Hide the horizontal scroll */
 }
 
 #abs{
@@ -25,6 +32,10 @@ body{
 }
 
 #photo{
+}
+
+tbody {
+
 }
 
 #meteo{
