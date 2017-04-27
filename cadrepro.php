@@ -1,7 +1,7 @@
 <html>
 	
 	<head> 
-		<title>Projet TV</title>
+		<title>Projet TV - Quentin</title>
 		<SCRIPT LANGUAGE="JavaScript">
 				
 				// script alerte
