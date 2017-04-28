@@ -49,40 +49,48 @@
 		<table class="table">
 		  <tbody>
 				<tr bgcolor="blue">
+					
 					<td id="pub">
-					<?php
-				
-					$user="yoann";
-					$pass="root";
-					try {
-						$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user, $pass);
-						foreach($dbh->query('SELECT nom, prenom from prof') as $row) {
-						
-						// ici faire une boucle qui parcours $row afin d'afficher proprement les noms et prénoms des profs
-							print_r($row[0]);
-							echo "&nbsp;";
-							print_r($row[1][0]);
-							echo "<br />";
-						}
-						$dbh = null;
-					} catch (PDOException $e) {
-						print "Erreur !: " . $e->getMessage() . "<br/>";
-						die();
-					}
-					?>
-					</td> 
+					1
+					</td>
+					
 					<td rowspan="2" id="activite">2</td> 
+					
 					<td id="meteo">
 						<div id="cont_26c4ec352c497050c4c5c215e33b28b2">
 							<script type="text/javascript" >
 							test();
 							</script>
 						</div>
-					</td>	
+					</td>
+					
 				</tr>
 				
 				<tr>
-					 <td id="abs">4</td> 
+					<td id="abs">
+					<!--
+					<?php
+					try {
+						$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
+					} 
+					catch (PDOException $e) {
+						print "Erreur !: " . $e->getMessage() . "<br/>";
+						die();
+					}
+					$reponse = $dbh->query('SELECT * from prof LIMIT 0,2');
+					while ($donnees = $reponse->fetch())
+					{
+					?>
+						<p>
+						<?php echo $donnees['nom']; ?>
+						<?php echo $donnees['prenom']; ?>
+						</p>
+					<?php
+					}
+					$reponse->closeCursor(); // Termine le traitement de la requête
+					?>
+					-->
+					</td> 
 					 
 					 <td id="photo">5</td>
 				</tr>
