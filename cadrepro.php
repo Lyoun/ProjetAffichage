@@ -68,29 +68,51 @@
 				
 				<tr>
 					<td id="abs">
-					<!--
-					<?php
-					try {
-						$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
-					} 
-					catch (PDOException $e) {
-						print "Erreur !: " . $e->getMessage() . "<br/>";
-						die();
-					}
-					$reponse = $dbh->query('SELECT * from prof LIMIT 0,2');
-					while ($donnees = $reponse->fetch())
-					{
-					?>
-						<p>
-						<?php echo $donnees['nom']; ?>
-						<?php echo $donnees['prenom']; ?>
-						</p>
-					<?php
-					}
-					$reponse->closeCursor(); // Termine le traitement de la requête
-					?>
-					-->
-					</td> 
+					<table class="table">
+						<tbody>
+							<tr bgcolor="blue">
+								<td id="one">
+									<?php
+									try {
+										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
+									} 
+									catch (PDOException $e) {
+										print "Erreur !: " . $e->getMessage() . "<br/>";
+										die();
+									}
+									$reponse = $dbh->query('SELECT * from prof LIMIT 0,13');
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										<?php 
+											$nom = $donnees['nom'];
+											echo $nom[0];
+											echo $donnees['prenom']; 
+										?>
+										</div>
+									<?php
+									}
+									?>
+								</td>
+								<td id="two">
+									<?php
+									$reponse = $dbh->query('SELECT * from prof LIMIT 13,13');
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										<?php echo $donnees['nom']; ?>
+										<?php echo $donnees['prenom']; ?>
+										</div>
+									<?php
+									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 					 
 					 <td id="photo">5</td>
 				</tr>
