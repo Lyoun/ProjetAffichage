@@ -49,42 +49,103 @@
 		<table class="table">
 		  <tbody>
 				<tr bgcolor="blue">
+					
 					<td id="pub">
-					<?php
-				
-					$user="yoann";
-					$pass="root";
-					try {
-						$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user, $pass);
-						foreach($dbh->query('SELECT nom, prenom from prof') as $row) {
-						
-						// ici faire une boucle qui parcours $row afin d'afficher proprement les noms et prénoms des profs
-							print_r($row[0]);
-							echo "&nbsp;";
-							print_r($row[1][0]);
-							echo "<br />";
-						}
-						$dbh = null;
-					} catch (PDOException $e) {
-						print "Erreur !: " . $e->getMessage() . "<br/>";
-						die();
-					}
-					?>
-					</td> 
+					1
+					</td>
+					
 					<td rowspan="2" id="activite">2</td> 
+					
 					<td id="meteo">
 						<div id="cont_26c4ec352c497050c4c5c215e33b28b2">
 							<script type="text/javascript" >
 							test();
 							</script>
 						</div>
-					</td>	
+					</td>
+					
 				</tr>
 				
 				<tr>
-					 <td id="abs">4</td> 
+					<td id="abs">
+					<table class="table">
+						<tbody>
+							<tr bgcolor="blue">
+								<td id="one">
+									<?php
+									try {
+										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="solan", $pass="root");
+									} 
+									catch (PDOException $e) {
+										print "Erreur !: " . $e->getMessage() . "<br/>";
+										die();
+									}
+									$reponse = $dbh->query('SELECT * from prof LIMIT 0,13');
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										<?php 
+											$nom = $donnees['nom'];
+											echo $nom[0];
+											echo $donnees['prenom']; 
+										?>
+										</div>
+									<?php
+									}
+									?>
+								</td>
+								<td id="two">
+									<?php
+									$reponse = $dbh->query('SELECT * from prof LIMIT 13,13');
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										<?php echo $donnees['nom']; ?>
+										<?php echo $donnees['prenom']; ?>
+										</div>
+									<?php
+									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 					 
-					 <td id="photo">5</td>
+					 <td id="photo">555555
+						<?php
+						
+						define('hostname','10.25.221.203');
+						define('usuario','solan');
+						define('pword','root');
+						define('db','tv_db');
+
+						function carga_anuncios()
+						{
+							$mysqli = mysqli_connect(hostname, usuario, pword);
+
+							mysqli_select_db($mysqli, db); 
+
+							if(!$mysqli)
+								echo 'Cant connect to MySQL: '.mysqli_connect_error();
+
+							$id='1';  
+							$stmt = $mysqli->stmt_init();
+							$stmt = $mysqli->query("SELECT fldFoto FROM tblAnuncios"); 
+
+							while ($row = mysqli_fetch_assoc($stmt)) 
+							{
+								$imagen = $row['fldFoto'];
+								$imagen = base64_encode($imagen);
+								echo '<img src="data:image/jpeg;base64,'.$imagen.'"/>';
+							}
+						} 
+					 
+						?>
+					 
+					 </td>
 				</tr>
 				
 				<tr id="alerte">
