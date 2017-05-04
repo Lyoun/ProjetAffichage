@@ -115,36 +115,21 @@
 					</table>
 					 
 					 <td id="photo">555555
-						<?php
-						
-						define('hostname','10.25.221.203');
-						define('usuario','solan');
-						define('pword','root');
-						define('db','tv_db');
+				
 
-						function carga_anuncios()
-						{
-							$mysqli = mysqli_connect(hostname, usuario, pword);
+					<?php
+					mysql_connect("10.25.221.203","solan","root");
+					mysql_select_db("tv_db");
+					$image = stripslashes($_REQUEST[bebras.jpg]);
+					$rs = mysql_query("SELECT * from photo where id=5"".
+							addslashes($image).".jpg\"");
+					$row = mysql_fetch_assoc($rs);
+					$imagebytes = $row[imgdata];
+					header("Content-type: image/jpeg");
+					print $imagebytes;
+					?>	
 
-							mysqli_select_db($mysqli, db); 
-
-							if(!$mysqli)
-								echo 'Cant connect to MySQL: '.mysqli_connect_error();
-
-							$id='1';  
-							$stmt = $mysqli->stmt_init();
-							$stmt = $mysqli->query("SELECT fldFoto FROM tblAnuncios"); 
-
-							while ($row = mysqli_fetch_assoc($stmt)) 
-							{
-								$imagen = $row['fldFoto'];
-								$imagen = base64_encode($imagen);
-								echo '<img src="data:image/jpeg;base64,'.$imagen.'"/>';
-							}
-						} 
-					 
-						?>
-					 
+					
 					 </td>
 				</tr>
 				
