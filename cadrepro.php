@@ -48,7 +48,7 @@
 
 		<table class="table">
 		  <tbody>
-				<tr bgcolor="blue">
+				<tr>
 					
 					<td id="pub">
 					1
@@ -70,8 +70,9 @@
 					<td id="abs">
 					<table class="table">
 						<tbody>
-							<tr bgcolor="blue">
+							<tr>
 								<td id="one">
+								
 									<?php
 									try {
 										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
@@ -80,16 +81,28 @@
 										print "Erreur !: " . $e->getMessage() . "<br/>";
 										die();
 									}
-									$reponse = $dbh->query('SELECT * from prof LIMIT 0,13');
-									while ($donnees = $reponse->fetch())
+									$reponse = $dbh->query('SELECT prof.nom,prof.prenom,absence.commentaire 
+															FROM absence 
+															INNER JOIN prof 
+															ON absence.prof_id_prof = prof.id_prof 
+															LIMIT 0,13
+															');
+									while ($donnees = $reponse->fetch());
 									{
 									?>
 										<div>
+										
 										<?php 
-											$nom = $donnees['nom'];
-											echo $nom[0];
-											echo $donnees['prenom']; 
+											echo $donnees['nom'];
 										?>
+										<?php
+											$prenom = $donnees['prenom'];
+											echo $prenom[0];
+										?>.
+										<?php 
+											echo $donnees['commentaire'];
+										?>
+
 										</div>
 									<?php
 									}
@@ -102,8 +115,33 @@
 									{
 									?>
 										<div>
-										<?php echo $donnees['nom']; ?>
-										<?php echo $donnees['prenom']; ?>
+										<?php 
+											echo $donnees['nom'];
+										?>
+										<?php
+											$prenom = $donnees['prenom'];
+											echo $prenom[0];
+										?>.
+										</div>
+									<?php
+									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+								</td>
+								<td id="three">
+									<?php
+									$reponse = $dbh->query('SELECT * from prof LIMIT 26,13');
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										<?php 
+											echo $donnees['nom'];
+										?>
+										<?php
+											$prenom = $donnees['prenom'];
+											echo $prenom[0];
+										?>.
 										</div>
 									<?php
 									}
