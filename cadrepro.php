@@ -74,7 +74,7 @@
 								<td id="one">
 									<?php
 									try {
-										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="solan", $pass="root");
+										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="yoann", $pass="123");
 									} 
 									catch (PDOException $e) {
 										print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -115,19 +115,30 @@
 					</table>
 					 
 					 <td id="photo">555555
-				
+					          
+							  <?php
+ 
+							  mysql_connect("10.25.221.203","yoann","123");
+					 
+							  mysql_select_db("tv_db");
+					 
+							  $image = stripslashes($_REQUEST[bebras.jpg]);
+					 
+							  $rs = mysql_query('SELECT * from photo where id=5');
+					 
+								 
+					 
+							  $row = mysql_fetch_assoc($rs);
+					 
+							  $imagebytes = $row[imgdata];
+					 
+							  header("Content-type: image/jpeg");
+					 
+							  print $imagebytes;
+					 
+							  ?> 
 
-					<?php
-					mysql_connect("10.25.221.203","solan","root");
-					mysql_select_db("tv_db");
-					$image = stripslashes($_REQUEST[bebras.jpg]);
-					$rs = mysql_query("SELECT * from photo where id=5"".
-							addslashes($image).".jpg\"");
-					$row = mysql_fetch_assoc($rs);
-					$imagebytes = $row[imgdata];
-					header("Content-type: image/jpeg");
-					print $imagebytes;
-					?>	
+
 
 					
 					 </td>
