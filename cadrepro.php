@@ -1,10 +1,10 @@
-<html>
+<html> 
 	
 	<head> 
 		<title>Projet TV</title>
-		<SCRIPT LANGUAGE="JavaScript">
+		<SCRIPT LANGUAGE="JavaScript"> // SOLAN EVRARD //
 				
-				// script alerte
+				// script alerte 
 				var posBan=0, ban, delai, msgBan;
 				msgBan="IND BERTRIX TON FUTUR S'Y CONSTRUIT !!!";
 				function banniere() {
@@ -74,7 +74,7 @@
 								<td id="one">
 									<?php
 									try {
-										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="yoann", $pass="123");
+										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
 									} 
 									catch (PDOException $e) {
 										print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -114,33 +114,41 @@
 						</tbody>
 					</table>
 					 
-					 <td id="photo">555555
-					          
-							  <?php
- 
-							  mysql_connect("10.25.221.203","yoann","123");
-					 
-							  mysql_select_db("tv_db");
-					 
-							  $image = stripslashes($_REQUEST[bebras.jpg]);
-					 
-							  $rs = mysql_query('SELECT * from photo where id=5');
-					 
-								 
-					 
-							  $row = mysql_fetch_assoc($rs);
-					 
-							  $imagebytes = $row[imgdata];
-					 
-							  header("Content-type: image/jpeg");
-					 
-							  print $imagebytes;
-					 
-							  ?> 
+					 <td id="photo">5
+						
+						<?php
+						echo '<td><img src="'.$drapeau.'" alt="" /><font size="-1">'.$afro_club.'</font></td>\n';
+						?>
+
+						<?php
+						// Ton code (la partie intéressante)
+						$nationalite=$_POST['nationalite'];
+						$drp=traiter($nationalite);
+						$drapeau="pays/$drp.gif";
+						 
+						// donc ton lien:
+						echo '<img src=/uploads/"'.$drapeau.'" alt="photo indisponible" title = "photo_title" />';
+						$reponse = $dbh->query('SELECT  from photo WHERE id_photo = '1');
+						
+																												// $photo_chemin = "";
+
+																													///////////
+
+																												//	<img src=/uploads/'.$photo_nom.' alt="$photo_alternative" title="photo_title" />
+
+																													///////////
 
 
+																												//	SELECT nom_photo 
+																												//	FROM photo
+																												//	WHERE id_photo = '1';
 
-					
+																													////////////
+
+																												//	$photo_nom = 
+																												//
+						
+						
 					 </td>
 				</tr>
 				
