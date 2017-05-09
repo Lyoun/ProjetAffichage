@@ -22,23 +22,6 @@
 				}
 			    //
 				
-				//script meteo
-				function test() {
-				conte = document.getElementById("cont_26c4ec352c497050c4c5c215e33b28b2");
-                        if (conte) {
-                            conte.style.cssText = "width: 404px; color: #868686; background-color:#FFFFFF; border:1px solid #D6D6D6; margin: 0 auto; font-family: Roboto;";
-                            elem = document.createElement("iframe");
-                            elem.style.cssText = "width:404px; color:#868686; height:172px;";
-                            elem.id = "26c4ec352c497050c4c5c215e33b28b2";
-                            elem.src = "https://www.tameteo.com/getwid/26c4ec352c497050c4c5c215e33b28b2";
-                            elem.frameBorder = 0;
-                            elem.allowTransparency = true;
-                            elem.scrolling = "no";
-                            elem.name = "flipe";
-                            conte.appendChild(elem);
-                        }
-				}
-				//
 			
 		</SCRIPT>
 		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css"/>
@@ -50,29 +33,10 @@
 		  <tbody>
 				<tr bgcolor="blue">
 					<td id="pub">
-					<?php
-				
-					$user="quentin";
-					$pass="root";
-					try {
-						$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user, $pass);
-						foreach($dbh->query('SELECT * from prof') as $row) {
-							//print_r($row);
-						}
-						$dbh = null;
-					} catch (PDOException $e) {
-						//print "Erreur !: " . $e->getMessage() . "<br/>";
-						die();
-					}
-					?>
 					</td> 
 					<td rowspan="2" id="activite">2</td> 
 					<td id="meteo">
-						<div id="cont_26c4ec352c497050c4c5c215e33b28b2">
-							<script type="text/javascript" >
-							test();
-							</script>
-						</div>
+					<iframe scrolling="no" width="100%" height ="100%" frameborder="0" marginwidth="0" marginheight="0" src="http://www.meteo.be/services/widget/.?postcode=6880&nbDay=2&type=11&lang=fr&bgImageId=0&bgColor=transparent&scrolChoice=0&colorTempMax=d31d1d&colorTempMin=1795e8"></iframe>
 					</td>	
 				</tr>
 				
