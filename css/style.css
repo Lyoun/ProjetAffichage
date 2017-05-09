@@ -53,6 +53,9 @@ tbody {
 	height:45%;
 	background-color:white;
 }
+com{
+	font-size : 10px
+}
 
 table{
     border-collapse: collapse;
@@ -78,6 +81,7 @@ input[type="text"] {
   
    
 }
+
 
 input[type="text"]:focus {
   outline: none;

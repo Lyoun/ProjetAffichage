@@ -80,41 +80,56 @@
 									catch (PDOException $e) {
 										print "Erreur !: " . $e->getMessage() . "<br/>";
 										die();
-									}
-									$reponse = $dbh->query('SELECT prof.nom,prof.prenom,absence.commentaire 
-															FROM absence 
-															INNER JOIN prof 
-															ON absence.prof_id_prof = prof.id_prof 
-															LIMIT 0,13
-															');
-									while ($donnees = $reponse->fetch());
-									{
-									?>
-										<div>
-										
-										<?php 
-											echo $donnees['nom'];
-										?>
-										<?php
-											$prenom = $donnees['prenom'];
-											echo $prenom[0];
-										?>.
-										<?php 
-											echo $donnees['commentaire'];
-										?>
-
-										</div>
-									<?php
-									}
-									?>
-								</td>
-								<td id="two">
-									<?php
-									$reponse = $dbh->query('SELECT * from prof LIMIT 13,13');
+									}				
+								
+									$reponse = $dbh->query('
+												SELECT *
+												FROM absence 
+												INNER JOIN prof 
+												ON absence.prof_id_prof = prof.id_prof 
+												LIMIT 0,13
+												');
 									while ($donnees = $reponse->fetch())
 									{
 									?>
 										<div>
+										&nbsp
+										&nbsp
+										<?php 
+											echo $donnees['nom'];
+										?>
+										<?php
+											$prenom = $donnees['prenom'];
+											echo $prenom[0];
+										?>.<br />
+										</div>
+										<div class="com">
+										&nbsp
+										&nbsp
+										<?php
+											echo $donnees['commentaire'];
+										?>
+										</div>
+									<?php
+									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+								</td>
+								<td id="two">
+									<?php
+									$reponse = $dbh->query('
+												SELECT *
+												FROM absence 
+												INNER JOIN prof 
+												ON absence.prof_id_prof = prof.id_prof 
+												LIMIT 13,13
+												');
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										&nbsp
+										&nbsp
 										<?php 
 											echo $donnees['nom'];
 										?>
@@ -122,6 +137,13 @@
 											$prenom = $donnees['prenom'];
 											echo $prenom[0];
 										?>.
+										</div>
+										<div class="com">
+										&nbsp
+										&nbsp
+										<?php
+											echo $donnees['commentaire'];
+										?>
 										</div>
 									<?php
 									}
@@ -130,11 +152,19 @@
 								</td>
 								<td id="three">
 									<?php
-									$reponse = $dbh->query('SELECT * from prof LIMIT 26,13');
+									$reponse = $dbh->query('
+												SELECT *
+												FROM absence 
+												INNER JOIN prof 
+												ON absence.prof_id_prof = prof.id_prof 
+												LIMIT 26,13
+												');
 									while ($donnees = $reponse->fetch())
 									{
 									?>
 										<div>
+										&nbsp
+										&nbsp
 										<?php 
 											echo $donnees['nom'];
 										?>
@@ -142,6 +172,13 @@
 											$prenom = $donnees['prenom'];
 											echo $prenom[0];
 										?>.
+										</div>
+										<div class="com">
+										&nbsp
+										&nbsp
+										<?php
+											echo $donnees['commentaire'];
+										?>
 										</div>
 									<?php
 									}
