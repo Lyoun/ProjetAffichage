@@ -116,38 +116,26 @@
 					 
 					 <td id="photo">5
 						
+
 						<?php
-						echo '<td><img src="'.$drapeau.'" alt="" /><font size="-1">'.$afro_club.'</font></td>\n';
+						try {
+							$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
+						} 
+						
+						$photo_chemin = "/\var\www\uploads\/";
+
+																													
+
+						echo <img src='.$lien.' alt="$photo_alternative" title="description" />
+
+																													
+						$reponse = $dbh->query('SELECT lien from photo WHERE id_photo='1');
+						while ($donnees = $reponse->fetch())					
+
+
+						$photo_nom = 
+																												
 						?>
-
-						<?php
-						// Ton code (la partie intéressante)
-						$nationalite=$_POST['nationalite'];
-						$drp=traiter($nationalite);
-						$drapeau="pays/$drp.gif";
-						 
-						// donc ton lien:
-						echo '<img src=/uploads/"'.$drapeau.'" alt="photo indisponible" title = "photo_title" />';
-						$reponse = $dbh->query('SELECT  from photo WHERE id_photo = '1');
-						
-																												// $photo_chemin = "";
-
-																													///////////
-
-																												//	<img src=/uploads/'.$photo_nom.' alt="$photo_alternative" title="photo_title" />
-
-																													///////////
-
-
-																												//	SELECT nom_photo 
-																												//	FROM photo
-																												//	WHERE id_photo = '1';
-
-																													////////////
-
-																												//	$photo_nom = 
-																												//
-						
 						
 					 </td>
 				</tr>
