@@ -95,21 +95,27 @@
 										<div>
 										&nbsp
 										&nbsp
-										<?php 
-											echo $donnees['nom'];
-										?>
+										<?php echo $donnees['nom']; ?>
 										<?php
 											$prenom = $donnees['prenom'];
 											echo $prenom[0];
-										?>.<br />
+										?>.
 										</div>
+										<?php
+											if (isset($donnees['commentaire'])) 
+											{
+										?>
 										<div class="com">
 										&nbsp
 										&nbsp
-										<?php
-											echo $donnees['commentaire'];
-										?>
+										&nbsp
+										( 
+										<?php echo $donnees['commentaire'];?> )
 										</div>
+										<?php
+										}
+										?>
+			
 									<?php
 									}
 									$reponse->closeCursor(); // Termine le traitement de la requête
@@ -130,20 +136,27 @@
 										<div>
 										&nbsp
 										&nbsp
-										<?php 
-											echo $donnees['nom'];
-										?>
+										<?php echo $donnees['nom']; ?>
 										<?php
 											$prenom = $donnees['prenom'];
 											echo $prenom[0];
 										?>.
 										</div>
+										<?php
+											if (isset($donnees['commentaire'])) 
+											{
+										?>
 										<div class="com">
 										&nbsp
 										&nbsp
+										&nbsp
+										( 
+										<?php echo $donnees['commentaire'];?> )
+										</div>
 										<?php
-											echo $donnees['commentaire'];
+										}
 										?>
+										
 										</div>
 									<?php
 									}
@@ -165,20 +178,31 @@
 										<div>
 										&nbsp
 										&nbsp
-										<?php 
-											echo $donnees['nom'];
-										?>
+										<?php echo $donnees['nom']; ?>
 										<?php
 											$prenom = $donnees['prenom'];
 											echo $prenom[0];
 										?>.
 										</div>
+										<?php
+											if (isset($donnees['commentaire'])) 
+											{
+										?>
 										<div class="com">
 										&nbsp
 										&nbsp
-										<?php
+										&nbsp
+										( 
+										<?php 
+											//$text = $_POST['commentaire'];
+											//$donnees = wordwrap($text, 10, "<br />\r\n", true);
 											echo $donnees['commentaire'];
-										?>
+										?> )
+										</div>
+										<?php
+										}
+										?>		
+										</font>
 										</div>
 									<?php
 									}
