@@ -72,7 +72,7 @@
 						<tbody>
 							<tr>
 								<td id="one">
-								
+									<br />
 									<?php
 									try {
 										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
@@ -89,6 +89,7 @@
 												ON absence.prof_id_prof = prof.id_prof 
 												LIMIT 0,13
 												');
+									
 									while ($donnees = $reponse->fetch())
 									{
 									?>
@@ -122,6 +123,7 @@
 									?>
 								</td>
 								<td id="two">
+									<br />
 									<?php
 									$reponse = $dbh->query('
 												SELECT *
@@ -164,6 +166,7 @@
 									?>
 								</td>
 								<td id="three">
+									<br />
 									<?php
 									$reponse = $dbh->query('
 												SELECT *
