@@ -213,8 +213,25 @@
 						</tbody>
 					</table>
 					 
-					 <td id="photo">5</td>
+					 <td id="photo">
+						 <?php
+							
+							function afficheImage($id){
+								$sql = "SELECT lien FROM pub WHERE id_pub=7".$id;
+								$res = mysql_query($sql);
+								
+								WHILE ($image = mysql_fetch_assoc($res)){
+									
+									
+							}
+
+						?>
+					 </td>
 				</tr>
+						
+						
+					
+					
 				
 				<tr id="alerte">
 					<td colspan="3">
