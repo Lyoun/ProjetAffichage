@@ -65,15 +65,20 @@
 					</td>
 					
 				</tr>
-				
 				<tr>
+					<!-- Partie absence -->
 					<td id="abs">
+					<!-- Tableau -->
 					<table class="table">
 						<tbody>
 							<tr>
+								<!-- première colonne (ces commentaires s'appliquent aussi pour les autres colonnes) -->
+								
 								<td id="one">
+									<!-- Ajout d'un retour à la ligne à la première ligne pour un espace blanc, pour la propreté -->
 									<br />
 									<?php
+									//connection à la base de donnée
 									try {
 										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
 									} 
@@ -81,7 +86,8 @@
 										print "Erreur !: " . $e->getMessage() . "<br/>";
 										die();
 									}				
-								
+									//Récupération de la table prof de la DB et sélection de ceux ci en fonction de la table 
+									//absence en faisant correspondre les 2 ID, on finit par commencer à l'ID 0 et prendre les 13 suivants avec le LIMIT
 									$reponse = $dbh->query('
 												SELECT *
 												FROM absence 
@@ -89,30 +95,41 @@
 												ON absence.prof_id_prof = prof.id_prof 
 												LIMIT 0,13
 												');
-									
+									//Affichage des noms
 									while ($donnees = $reponse->fetch())
 									{
 									?>
 										<div>
+										<!-- Ajout de 2 espaces pour plus de propreté -->
 										&nbsp
 										&nbsp
+										<!-- Affichage du nom -->
 										<?php echo $donnees['nom']; ?>
+										<!-- affichage de la première lettre du prénom -->
 										<?php
 											$prenom = $donnees['prenom'];
 											echo $prenom[0];
-										?>.
+										?>
+										<!-- Ajout d'un point ci dessous pour l'abréviation du prénom -->
+										.
 										</div>
+										<!-- Le code ci-dessous dit que si il y a un commentaire dans la base de donnée,
+										nous allons le rechercher-->
 										<?php
 											if (isset($donnees['commentaire'])) 
 											{
 										?>
+										<!-- Nous créeons un class en CSS pour mettre en forme le commentaire -->
 										<div class="com">
+										<!-- Des espaces pour avancer les commentaires et faire plus propres -->
 										&nbsp
 										&nbsp
 										&nbsp
+										<!-- On met les éventuels commentaires entre parenthèses et on les écrits -->
 										( 
 										<?php echo $donnees['commentaire'];?> )
 										</div>
+										<!-- Fin de la boucle d'écriture -->
 										<?php
 										}
 										?>
@@ -122,6 +139,9 @@
 									$reponse->closeCursor(); // Termine le traitement de la requête
 									?>
 								</td>
+								
+								<!-- Deuxième colonne -->
+								
 								<td id="two">
 									<br />
 									<?php
@@ -165,6 +185,9 @@
 									$reponse->closeCursor(); // Termine le traitement de la requête
 									?>
 								</td>
+								
+								<!-- Troisième colonne -->
+								
 								<td id="three">
 									<br />
 									<?php
