@@ -1,10 +1,10 @@
-<html> 
+<html>
 	
 	<head> 
 		<title>Projet TV</title>
-		<SCRIPT LANGUAGE="JavaScript"> // SOLAN EVRARD //
+		<SCRIPT LANGUAGE="JavaScript">
 				
-				// script alerte 
+				// script alerte
 				var posBan=0, ban, delai, msgBan;
 				msgBan="IND BERTRIX TON FUTUR S'Y CONSTRUIT !!!";
 				function banniere() {
@@ -48,7 +48,7 @@
 
 		<table class="table">
 		  <tbody>
-				<tr bgcolor="blue">
+				<tr>
 					
 					<td id="pub">
 					1
@@ -70,8 +70,9 @@
 					<td id="abs">
 					<table class="table">
 						<tbody>
-							<tr bgcolor="blue">
+							<tr>
 								<td id="one">
+								
 									<?php
 									try {
 										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
@@ -79,31 +80,129 @@
 									catch (PDOException $e) {
 										print "Erreur !: " . $e->getMessage() . "<br/>";
 										die();
-									}
-									$reponse = $dbh->query('SELECT * from prof LIMIT 0,13');
+									}				
+								
+									$reponse = $dbh->query('
+												SELECT *
+												FROM absence 
+												INNER JOIN prof 
+												ON absence.prof_id_prof = prof.id_prof 
+												LIMIT 0,13
+												');
 									while ($donnees = $reponse->fetch())
 									{
 									?>
 										<div>
-										<?php 
-											$nom = $donnees['nom'];
-											echo $nom[0];
-											echo $donnees['prenom']; 
-										?>
+										&nbsp
+										&nbsp
+										<?php echo $donnees['nom']; ?>
+										<?php
+											$prenom = $donnees['prenom'];
+											echo $prenom[0];
+										?>.
 										</div>
+										<?php
+											if (isset($donnees['commentaire'])) 
+											{
+										?>
+										<div class="com">
+										&nbsp
+										&nbsp
+										&nbsp
+										( 
+										<?php echo $donnees['commentaire'];?> )
+										</div>
+										<?php
+										}
+										?>
+			
 									<?php
 									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
 									?>
 								</td>
 								<td id="two">
 									<?php
-									$reponse = $dbh->query('SELECT * from prof LIMIT 13,13');
+									$reponse = $dbh->query('
+												SELECT *
+												FROM absence 
+												INNER JOIN prof 
+												ON absence.prof_id_prof = prof.id_prof 
+												LIMIT 13,13
+												');
 									while ($donnees = $reponse->fetch())
 									{
 									?>
 										<div>
+										&nbsp
+										&nbsp
 										<?php echo $donnees['nom']; ?>
-										<?php echo $donnees['prenom']; ?>
+										<?php
+											$prenom = $donnees['prenom'];
+											echo $prenom[0];
+										?>.
+										</div>
+										<?php
+											if (isset($donnees['commentaire'])) 
+											{
+										?>
+										<div class="com">
+										&nbsp
+										&nbsp
+										&nbsp
+										( 
+										<?php echo $donnees['commentaire'];?> )
+										</div>
+										<?php
+										}
+										?>
+										
+										</div>
+									<?php
+									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+								</td>
+								<td id="three">
+									<?php
+									$reponse = $dbh->query('
+												SELECT *
+												FROM absence 
+												INNER JOIN prof 
+												ON absence.prof_id_prof = prof.id_prof 
+												LIMIT 26,13
+												');
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										&nbsp
+										&nbsp
+										<?php echo $donnees['nom']; ?>
+										<?php
+											$prenom = $donnees['prenom'];
+											echo $prenom[0];
+										?>.
+										</div>
+										<?php
+											if (isset($donnees['commentaire'])) 
+											{
+										?>
+										<div class="com">
+										&nbsp
+										&nbsp
+										&nbsp
+										( 
+										<?php 
+											//$text = $_POST['commentaire'];
+											//$donnees = wordwrap($text, 10, "<br />\r\n", true);
+											echo $donnees['commentaire'];
+										?> )
+										</div>
+										<?php
+										}
+										?>		
+										</font>
 										</div>
 									<?php
 									}
@@ -114,30 +213,7 @@
 						</tbody>
 					</table>
 					 
-					 <td id="photo">5
-						
-
-						<?php
-						try {
-							$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
-						} 
-						
-						$photo_chemin = "/\var\www\uploads\/";
-
-																													
-
-						echo <img src='.$lien.' alt="$photo_alternative" title="description" />
-
-																													
-						$reponse = $dbh->query('SELECT lien from photo WHERE id_photo='1');
-						while ($donnees = $reponse->fetch())					
-
-
-						$photo_nom = 
-																												
-						?>
-						
-					 </td>
+					 <td id="photo">5</td>
 				</tr>
 				
 				<tr id="alerte">
