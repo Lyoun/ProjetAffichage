@@ -215,17 +215,23 @@
 					 
 					 <td id="photo">
 						 <?php
-							
-							function afficheImage($id){
-								$sql = "SELECT lien FROM pub WHERE id_pub=7".$id;
-								$res = mysql_query($sql);
-								
-								WHILE ($image = mysql_fetch_assoc($res)){
-									
-									
-							}
-
+							 
+							echo '<img src="image/bebras.jpg" alt="voici donc le texte derreur, si jamais il y a une erreur, le texte ci-avant saffichera dans les plus bref delais" height="208" width="312">'; 
+							echo '<img src="http://www.ilovegenerator.com/large/rigole-love-pas-t-nul-132101030483.png" alt="image vraiment simpa">';
 						?>
+						
+
+		  <?php
+			 include ("connexion.php");
+			 $req = "SELECT id_photo, nom " .
+					"FROM photo ORDER BY nom";
+			 $ret = mysql_query ($req) or die (mysql_error ());
+			 while ( $col = mysql_fetch_row ($ret) )
+			 {
+				 echo "<a href=\"apercu.php?id=" . $col[1] . "\">" . $col[0] . "</a><br />";
+			 }
+		  ?>						
+						
 					 </td>
 				</tr>
 						
