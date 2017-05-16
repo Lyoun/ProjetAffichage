@@ -1,12 +1,16 @@
 <html>
-	
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	<head> 
 		<title>Projet TV</title>
 		<SCRIPT LANGUAGE="JavaScript">
 				
 				// script alerte
 				var posBan=0, ban, delai, msgBan;
-				msgBan="IND BERTRIX TON FUTUR S'Y CONSTRUIT !!!";
+<<<<<<< HEAD
+				msgBan="inserer un texte sympa ici";
+=======
+				msgBan="a faire gicler un ane mort";
+>>>>>>> photos
 				function banniere() {
 				  delai = 200;
 				  if (posBan >= msgBan.length)
@@ -51,29 +55,76 @@
 				<tr>
 					
 					<td id="pub">
-					1
-					</td>
-					
-					<td rowspan="2" id="activite">2</td> 
-					
-					<td id="meteo">
-						<div id="cont_26c4ec352c497050c4c5c215e33b28b2">
-							<script type="text/javascript" >
-							test();
-							</script>
-						</div>
-					</td>
-					
-				</tr>
-				
-				<tr>
-					<td id="abs">
+					<br />
+					PUB
+					<!-- Tableau -->
 					<table class="table">
 						<tbody>
 							<tr>
-								<td id="one">
+								<td id="pub2">
+<<<<<<< HEAD
+								inserer texte ici
+=======
+								inserer dla merd isi x'D
+>>>>>>> photos
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</td>
+					
+					<td rowspan="2" id="activite">
+					<br />
+					ACTIVITES
+					<!-- Tableau -->
+					<table class="table">
+						<tbody>
+							<tr>
+								<td id="activite2">
+<<<<<<< HEAD
+								inserer texte ici
+=======
+								inserer dla merd isi x'D
+>>>>>>> photos
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</td>
+					 
+					
+					<td id="meteo">
+					<br />
+					METEO
+					<!-- Tableau -->
+					<table class="table">
+						<tbody>
+							<tr>
+								<td id="meteo2">
+								<script charset='UTF-8' src='http://www.meteofrance.com/mf3-rpc-portlet/rest/vignettepartenaire/06476/type/VILLE_MONDE/size/PAYSAGE_VIGNETTE' type='text/javascript'></script>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</td>
+					
+				</tr>
+				<tr>
+					<!-- Partie absence -->
+					<td id="abs">
+					<br />
+					PROFS ABSENTS
+					<!-- Tableau -->
+					<table class="table">
+						<tbody>
+							<tr>
+								<!-- première colonne (ces commentaires s'appliquent aussi pour les autres colonnes) -->
 								
+								<td id="one">
+									<!-- Ajout d'un retour à la ligne à la première ligne pour un espace blanc, pour la propreté -->
+									
 									<?php
+									//connection à la base de donnée
 									try {
 										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
 									} 
@@ -81,7 +132,8 @@
 										print "Erreur !: " . $e->getMessage() . "<br/>";
 										die();
 									}				
-								
+									//Récupération de la table prof de la DB et sélection de ceux ci en fonction de la table 
+									//absence en faisant correspondre les 2 ID, on finit par commencer à l'ID 0 et prendre les 13 suivants avec le LIMIT
 									$reponse = $dbh->query('
 												SELECT *
 												FROM absence 
@@ -89,29 +141,41 @@
 												ON absence.prof_id_prof = prof.id_prof 
 												LIMIT 0,13
 												');
+									//Affichage des noms
 									while ($donnees = $reponse->fetch())
 									{
 									?>
 										<div>
+										<!-- Ajout de 2 espaces pour plus de propreté -->
 										&nbsp
 										&nbsp
+										<!-- Affichage du nom -->
 										<?php echo $donnees['nom']; ?>
+										<!-- affichage de la première lettre du prénom -->
 										<?php
 											$prenom = $donnees['prenom'];
 											echo $prenom[0];
-										?>.
+										?>
+										<!-- Ajout d'un point ci dessous pour l'abréviation du prénom -->
+										.
 										</div>
+										<!-- Le code ci-dessous dit que si il y a un commentaire dans la base de donnée,
+										nous allons le rechercher-->
 										<?php
-											if (isset($donnees['commentaire'])) 
+											if (isset($donnees['travail'])) 
 											{
 										?>
+										<!-- Nous créeons un class en CSS pour mettre en forme le commentaire -->
 										<div class="com">
+										<!-- Des espaces pour avancer les commentaires et faire plus propres -->
 										&nbsp
 										&nbsp
 										&nbsp
+										<!-- On met les éventuels commentaires entre parenthèses et on les écrits -->
 										( 
-										<?php echo $donnees['commentaire'];?> )
+										<?php echo $donnees['travail'];?> )
 										</div>
+										<!-- Fin de la boucle d'écriture -->
 										<?php
 										}
 										?>
@@ -121,6 +185,9 @@
 									$reponse->closeCursor(); // Termine le traitement de la requête
 									?>
 								</td>
+								
+								<!-- Deuxième colonne -->
+								
 								<td id="two">
 									<?php
 									$reponse = $dbh->query('
@@ -143,7 +210,7 @@
 										?>.
 										</div>
 										<?php
-											if (isset($donnees['commentaire'])) 
+											if (isset($donnees['travail'])) 
 											{
 										?>
 										<div class="com">
@@ -151,7 +218,7 @@
 										&nbsp
 										&nbsp
 										( 
-										<?php echo $donnees['commentaire'];?> )
+										<?php echo $donnees['travail'];?> )
 										</div>
 										<?php
 										}
@@ -163,6 +230,9 @@
 									$reponse->closeCursor(); // Termine le traitement de la requête
 									?>
 								</td>
+								
+								<!-- Troisième colonne -->
+								
 								<td id="three">
 									<?php
 									$reponse = $dbh->query('
@@ -185,7 +255,7 @@
 										?>.
 										</div>
 										<?php
-											if (isset($donnees['commentaire'])) 
+											if (isset($donnees['travail'])) 
 											{
 										?>
 										<div class="com">
@@ -193,10 +263,8 @@
 										&nbsp
 										&nbsp
 										( 
-										<?php 
-											//$text = $_POST['commentaire'];
-											//$donnees = wordwrap($text, 10, "<br />\r\n", true);
-											echo $donnees['commentaire'];
+										<?php
+											echo $donnees['travail'];
 										?> )
 										</div>
 										<?php
@@ -213,31 +281,94 @@
 						</tbody>
 					</table>
 					 
-					 <td id="photo">
-						 <?php
-							 
-							echo '<img src="image/bebras.jpg" alt="voici donc le texte derreur, si jamais il y a une erreur, le texte ci-avant saffichera dans les plus bref delais" height="208" width="312">'; 
-							echo '<img src="http://www.ilovegenerator.com/large/rigole-love-pas-t-nul-132101030483.png" alt="image vraiment simpa">';
-						?>
-						
 
-		  <?php
-			 include ("connexion.php");
-			 $req = "SELECT id_photo, nom " .
-					"FROM photo ORDER BY nom";
-			 $ret = mysql_query ($req) or die (mysql_error ());
-			 while ( $col = mysql_fetch_row ($ret) )
-			 {
-				 echo "<a href=\"apercu.php?id=" . $col[1] . "\">" . $col[0] . "</a><br />";
-			 }
-		  ?>						
+<!-- Partie photo -->
+					<td id="photo">
+					<br />
+					PHOTO
+					<!-- Tableau -->
+					<table class="table">
+						<tbody>
+							<tr>
+								
+								<td id="one">
+									<!-- Ajout d'un retour à la ligne à la première ligne pour un espace blanc, pour la propreté -->
+									<?php
+							 
+										echo '<img src="image/bebras.jpg" alt="voici donc le texte derreur, si jamais il y a une erreur, le texte ci-avant saffichera dans les plus bref delais" height="208" width="312">'; 
+										echo '<img src="http://www.ilovegenerator.com/large/rigole-love-pas-t-nul-132101030483.png" alt="image vraiment simpa">';
+										echo '<img src="file://C:/Users/pirale2870/Downloads/Logo 2.png" alt="image vraiment cool">';
+									?>
+									<?php
+									//connection à la base de donnée
+									try {
+										$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
+									} 
+									catch (PDOException $e) {
+										print "Erreur !: " . $e->getMessage() . "<br/>";
+										die();
+									}				
+									//Récupération de la table photo de la DB et sélection de ceux ci en fonction de la table 
+									$reponse = $dbh->query('
+												SELECT *
+												FROM photo 
+												');
+									//Affichage des photos
+									while ($donnees = $reponse->fetch())
+									{
+									?>
+										<div>
+										<!-- Ajout de 2 espaces pour plus de propreté -->
+										&nbsp
+										&nbsp
+										<!-- Affichage du nom de l'image -->
+										<?php echo $donnees['nom']; ?>
+										<!-- affichage du lien l'image -->
+<<<<<<< HEAD
+										<?php echo $donnees['lien']; 
+											  echo '<img src="lien" alt="image vraiment cool">';
+										?>
+=======
+										<?php echo $donnees['lien']; ?>
+>>>>>>> photos
+										</div>
+										<!-- Le code ci-dessous dit que si il y a une description dans la base de donnée,
+										nous allons le rechercher-->
+										<?php
+											if (isset($donnees['description'])) 
+											{
+										?>
+										<!-- Nous créeons un class en CSS pour mettre en forme le commentaire -->
+										<div class="com">
+										<!-- Des espaces pour avancer les commentaires et faire plus propres -->
+										&nbsp
+										&nbsp
+										&nbsp
+										<!-- On met la description entre parenthèses et on les écrits -->
+										( 
+										<?php echo $donnees['description'];?> )
+										</div>
+										<!-- Fin de la boucle d'écriture -->
+										<?php
+										}
+										?>
+			
+									<?php
+									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+									
 						
+								</td>
+							</tr>
+						 </tbody>
+									</table>
+					
+					 
+					 
+					 
 					 </td>
 				</tr>
-						
-						
-					
-					
 				
 				<tr id="alerte">
 					<td colspan="3">
