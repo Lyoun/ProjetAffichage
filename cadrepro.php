@@ -116,7 +116,7 @@
 										<!-- Le code ci-dessous dit que si il y a un commentaire dans la base de donnée,
 										nous allons le rechercher-->
 										<?php
-											if (isset($donnees['commentaire'])) 
+											if (isset($donnees['travail'])) 
 											{
 										?>
 										<!-- Nous créeons un class en CSS pour mettre en forme le commentaire -->
@@ -127,7 +127,7 @@
 										&nbsp
 										<!-- On met les éventuels commentaires entre parenthèses et on les écrits -->
 										( 
-										<?php echo $donnees['commentaire'];?> )
+										<?php echo $donnees['travail'];?> )
 										</div>
 										<!-- Fin de la boucle d'écriture -->
 										<?php
@@ -165,7 +165,7 @@
 										?>.
 										</div>
 										<?php
-											if (isset($donnees['commentaire'])) 
+											if (isset($donnees['travail'])) 
 											{
 										?>
 										<div class="com">
@@ -173,7 +173,7 @@
 										&nbsp
 										&nbsp
 										( 
-										<?php echo $donnees['commentaire'];?> )
+										<?php echo $donnees['travail'];?> )
 										</div>
 										<?php
 										}
@@ -211,7 +211,7 @@
 										?>.
 										</div>
 										<?php
-											if (isset($donnees['commentaire'])) 
+											if (isset($donnees['travail'])) 
 											{
 										?>
 										<div class="com">
@@ -219,10 +219,8 @@
 										&nbsp
 										&nbsp
 										( 
-										<?php 
-											//$text = $_POST['commentaire'];
-											//$donnees = wordwrap($text, 10, "<br />\r\n", true);
-											echo $donnees['commentaire'];
+										<?php
+											echo $donnees['travail'];
 										?> )
 										</div>
 										<?php
