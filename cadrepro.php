@@ -54,7 +54,44 @@
 					1
 					</td>
 					
-					<td rowspan="2" id="activite">2</td> 
+					<td rowspan="2" id="activite">
+						
+						<?php
+						try {
+							$dbh = new PDO('mysql:host=10.25.221.203;dbname=tv_db', $user="jeremy", $pass="root");
+							} 
+						catch (PDOException $e) {
+							print "Erreur !: " . $e->getMessage() . "<br/>";
+							die();
+						}
+						?>
+						<table class="table">
+						<tbody>
+							<tr>
+							<td id="activiteone">
+							<?php
+							$reponse = $dbh->query('
+													SELECT *
+													FROM absence 
+													INNER JOIN prof 
+													ON absence.prof_id_prof = prof.id_prof 
+													LIMIT 0,13
+													');
+							while ($donnees = $reponse->fetch())
+								{
+							?>
+							<div>
+							<?php echo $donnees['nom']; ?>
+							</div>
+							<?php
+							}
+							$reponse->closeCursor(); // Termine le traitement de la requête
+							?>
+							</td>
+							</tr>
+						</tbody>
+						</table>
+					</td> 
 					
 					<td id="meteo">
 						<div id="cont_26c4ec352c497050c4c5c215e33b28b2">
@@ -68,6 +105,8 @@
 				<tr>
 					<!-- Partie absence -->
 					<td id="abs">
+					<br />
+					PROFS ABSENTS
 					<!-- Tableau -->
 					<table class="table">
 						<tbody>
@@ -76,7 +115,7 @@
 								
 								<td id="one">
 									<!-- Ajout d'un retour à la ligne à la première ligne pour un espace blanc, pour la propreté -->
-									<br />
+									
 									<?php
 									//connection à la base de donnée
 									try {
@@ -143,7 +182,6 @@
 								<!-- Deuxième colonne -->
 								
 								<td id="two">
-									<br />
 									<?php
 									$reponse = $dbh->query('
 												SELECT *
@@ -189,7 +227,6 @@
 								<!-- Troisième colonne -->
 								
 								<td id="three">
-									<br />
 									<?php
 									$reponse = $dbh->query('
 												SELECT *
