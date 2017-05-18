@@ -1,4 +1,5 @@
 html{
+
 	-webkit-text-size-adjust: 100%;
 	width:100%;
 	padding:0;
@@ -6,59 +7,122 @@ html{
 }
 
 body{
-  margin: 0;
-  }
 
-#alerte{
+	margin: 0;
+ }
+
+#alerte{	/* l'exterieur cadre alerte*/
+
 	background-color:white;
 	height:5%;
 	font-size:0px;
+	border: 10px solid gray;
 }
 
 #pub{
+
+	background-color:white;
+	border: 10px solid gray;
 }
 
 #abs{
-}
-
-#activite{
-}
-
-#photo{
-}
-
-#meteo{
 	width: 33%;
 	height:45%;
 	background-color:white;
+	border: 10px solid gray;
+	font-size:35px;
+}
 	
+	#tableabs{
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+		height:90%;
+		text-align:center;
+		border:3px solid red;
+	}
+	
+	#one{
+		font-size:17px;
+		text-align:left;
+		border-width:1px; 
+		border-style:solid; 
+		border-color:black;
+		width:33%;
+		vertical-align:top;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	}
+	
+	#two{
+		font-size:17px;
+		text-align:left;
+		width:33%;
+		border-width:1px; 
+		border-style:solid; 
+		border-color:black;
+		vertical-align:top;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	}
+	
+	#three{
+		font-size:17px;
+		text-align:left;
+		width:33%;
+		border-width:1px; 
+		border-style:solid; 
+		border-color:black;
+		vertical-align:top;
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+	}
+
+#activite{
+
+	background-color:white;
+	border: 10px solid gray;
+}
+
+#photo{
+
+	background-color:white;
+	border: 10px solid gray;
+}
+
+#meteo{
+	
+	background-color:white;
+	width: 33.3%;
+	height:45%;  
+	border: 10px solid gray;
+}
+.com{
+	font-size : 12px;
 }
 
 table{
+
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 	height:100%;
-    border: 1px solid #ddd;
 	text-align:center;
 	font-size:50px;
+	
 }
 
-input[type="text"] {
+input[type="text"] {	/* l'intérieur cadre alerte  */
 
-  display: block;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 0%;
-  font-family: sans-serif;
-  font-size: 60px;
-  appearance: none;
-  box-shadow: none;
-  
-   
+	display: block;
+	width: 100%;
+	height: 0%;
+	font-family:arial;
+	font-size: 60px;
+	appearance: none;
+	box-shadow: none;
+	background-color:white;   
 }
 
 input[type="text"]:focus {
-  outline: none;
+
+	outline: none;
 }
