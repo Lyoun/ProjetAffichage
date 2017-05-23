@@ -65,31 +65,256 @@
 							die();
 						}
 						?>
-						<table class="table">
-						<tbody>
-							<tr>
-							<td id="activiteone">
-							<?php
-							$reponse = $dbh->query('
-													SELECT *
-													FROM absence 
-													INNER JOIN prof 
-													ON absence.prof_id_prof = prof.id_prof 
-													LIMIT 0,13
-													');
-							while ($donnees = $reponse->fetch())
-								{
-							?>
-							<div>
-							<?php echo $donnees['nom']; ?>
-							</div>
-							<?php
-							}
-							$reponse->closeCursor(); // Termine le traitement de la requête
-							?>
-							</td>
-							</tr>
-						</tbody>
+						<div style="font-size:25px">
+							<br />
+							<u>Activité/Actualité</u>
+						</div>
+						<table class="table" id="activiteespace">
+							<tbody>
+								<tr>
+									<td id="activiteone">
+									<?php
+									$reponse = $dbh->query('
+															SELECT nom_activite, description, DAY(date_activite) AS jour, 
+																							  MONTH(date_activite) AS mois, 
+																							  YEAR(date_activite) AS annee, 
+																							  HOUR(date_activite) AS heure, 
+																							  MINUTE(date_activite) AS minute, 
+																							  SECOND(date_activite) AS seconde
+															FROM activite
+															LIMIT 0,1
+															');
+									while ($donnees = $reponse->fetch())
+										{
+									?>
+									<div>
+										&nbsp
+									</div>
+									<div>
+										&nbsp
+										<?php
+											if($donnees['jour']<10){
+												echo('0');
+												echo $donnees['jour'];
+											}
+											else{
+												echo $donnees['jour'];
+											}
+											echo ('/');
+											if($donnees['mois']<10){
+												echo('0');
+												echo $donnees['mois'];
+											}
+											else{
+												echo $donnees['mois'];
+											}
+										?>
+										&nbsp
+										<u>
+										<?php
+											if($donnees['heure']<10){
+													echo('0');
+													echo $donnees['heure'];
+												}
+												else{
+													echo $donnees['heure'];
+												}
+											if($donnees['minute']<10){
+												echo ('h');
+												echo('0');
+												echo $donnees['minute'];
+											}
+											else{
+												echo ('h');
+												echo $donnees['minute'];
+											}
+										?>
+										</u>
+										&nbsp
+										<b>
+										<?php
+											echo $donnees['nom_activite'];
+										?>
+										</b>
+										<?php
+											if (isset($donnees['description'])) 
+											{
+										?>
+										-
+										<?php 
+											echo $donnees['description'];
+										}
+										?>
+									</div>
+									<?php
+										}
+										$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+									</td>
+								</tr>
+								<tr>
+									<td id="activitetwo">
+									<?php
+									$reponse = $dbh->query('
+															SELECT nom_activite, description, DAY(date_activite) AS jour, 
+																							  MONTH(date_activite) AS mois, 
+																							  YEAR(date_activite) AS annee, 
+																							  HOUR(date_activite) AS heure, 
+																							  MINUTE(date_activite) AS minute, 
+																							  SECOND(date_activite) AS seconde
+															FROM activite
+															LIMIT 1,1
+															');
+									while ($donnees = $reponse->fetch())
+										{
+									?>
+									<div>
+										&nbsp
+									</div>
+									<div>
+										&nbsp
+										<?php
+											if($donnees['jour']<10){
+												echo('0');
+												echo $donnees['jour'];
+											}
+											else{
+												echo $donnees['jour'];
+											}
+											echo ('/');
+											if($donnees['mois']<10){
+												echo('0');
+												echo $donnees['mois'];
+											}
+											else{
+												echo $donnees['mois'];
+											}
+										?>
+										&nbsp
+										<u>
+										<?php
+											if($donnees['heure']<10){
+													echo('0');
+													echo $donnees['heure'];
+												}
+												else{
+													echo $donnees['heure'];
+												}
+											if($donnees['minute']<10){
+												echo ('h');
+												echo('0');
+												echo $donnees['minute'];
+											}
+											else{
+												echo ('h');
+												echo $donnees['minute'];
+											}
+										?>
+										</u>
+										&nbsp
+										<b>
+										<?php
+											echo $donnees['nom_activite'];
+										?>
+										</b>
+										<?php
+											if (isset($donnees['description'])) 
+											{
+										?>
+										-
+										<?php 
+											echo $donnees['description'];
+											}
+										?>
+									</div>
+									<?php
+										}
+										$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+									</td>
+								</tr>
+								<tr>
+									<td id="activitethree">
+									<?php
+									$reponse = $dbh->query('
+															SELECT nom_activite, description, DAY(date_activite) AS jour, 
+																							  MONTH(date_activite) AS mois, 
+																							  YEAR(date_activite) AS annee, 
+																							  HOUR(date_activite) AS heure, 
+																							  MINUTE(date_activite) AS minute,
+																							  SECOND(date_activite) AS seconde
+															FROM activite
+															LIMIT 2,1
+															');
+									while ($donnees = $reponse->fetch())
+										{
+									?>
+									<div>
+										&nbsp
+									</div>
+									<div>
+										&nbsp
+										<?php
+											if($donnees['jour']<10){
+												echo('0');
+												echo $donnees['jour'];
+											}
+											else{
+												echo $donnees['jour'];
+											}
+											echo ('/');
+											if($donnees['mois']<10){
+												echo('0');
+												echo $donnees['mois'];
+											}
+											else{
+												echo $donnees['mois'];
+											}
+										?>
+										&nbsp
+										<u>
+										<?php
+											if($donnees['heure']<10){
+													echo('0');
+													echo $donnees['heure'];
+												}
+												else{
+													echo $donnees['heure'];
+												}
+											if($donnees['minute']<10){
+												echo ('h');
+												echo('0');
+												echo $donnees['minute'];
+											}
+											else{
+												echo ('h');
+												echo $donnees['minute'];
+											}
+										?>
+										</u>
+										&nbsp
+										<b>
+										<?php
+											echo $donnees['nom_activite'];
+										?>
+										</b>
+										<?php
+											if (isset($donnees['description'])) 
+											{
+										?>
+										-
+										<?php 
+											echo $donnees['description'];
+											}
+										?>
+									</div>
+									<?php
+									}
+									$reponse->closeCursor(); // Termine le traitement de la requête
+									?>
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</td> 
 					
