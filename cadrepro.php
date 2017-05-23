@@ -6,11 +6,7 @@
 				
 				// script alerte
 				var posBan=0, ban, delai, msgBan;
-<<<<<<< HEAD
 				msgBan="inserer un texte sympa ici";
-=======
-				msgBan="a faire gicler un ane mort";
->>>>>>> photos
 				function banniere() {
 				  delai = 200;
 				  if (posBan >= msgBan.length)
@@ -62,11 +58,7 @@
 						<tbody>
 							<tr>
 								<td id="pub2">
-<<<<<<< HEAD
 								inserer texte ici
-=======
-								inserer dla merd isi x'D
->>>>>>> photos
 								</td>
 							</tr>
 						</tbody>
@@ -81,11 +73,7 @@
 						<tbody>
 							<tr>
 								<td id="activite2">
-<<<<<<< HEAD
 								inserer texte ici
-=======
-								inserer dla merd isi x'D
->>>>>>> photos
 								</td>
 							</tr>
 						</tbody>
@@ -324,13 +312,9 @@
 										<!-- Affichage du nom de l'image -->
 										<?php echo $donnees['nom']; ?>
 										<!-- affichage du lien l'image -->
-<<<<<<< HEAD
 										<?php echo $donnees['lien']; 
 											  echo '<img src="lien" alt="image vraiment cool">';
 										?>
-=======
-										<?php echo $donnees['lien']; ?>
->>>>>>> photos
 										</div>
 										<!-- Le code ci-dessous dit que si il y a une description dans la base de donnée,
 										nous allons le rechercher-->
